@@ -1,0 +1,256 @@
+@import "@/app/style/index.css";
+
+/*   */
+/* Button Theme */
+.button,
+.buttonprimary,
+.buttonsecondary,
+.buttonmute,
+/* .buttontext, */
+.buttoninfo,
+.buttonfullWidth,
+.buttonelevated {
+  min-width: var(--buttonMinWidth) !important;
+  padding: var(--buttonPadding) !important;
+  cursor: var(--cursor) !important;
+  border-radius: var(--buttonRadius) !important;
+  height: 40px !important;
+  border: none !important;
+  font-family: "rootFontFamily" !important;
+  font-style: normal !important;
+  font-size: 16px !important;
+  line-height: 23px !important;
+  text-align: center !important;
+  text-transform: none !important;
+  letter-spacing: normal !important;
+}
+
+/* General */
+
+.button {
+  color: var(--white-10) !important;
+  background-color: var(--black-10) !important;
+  font-weight: 700 !important;
+  padding: var(--buttonPadding) !important;
+}
+
+.button:active {
+  background-color: var(--black-20) !important;
+  color: var(--white-10) !important;
+  font-weight: 700 !important;
+}
+
+/* Primary */
+
+.buttonprimary {
+  background-color: var(--black-10) !important;
+  color: var(--white-10) !important;
+  font-weight: 700 !important;
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.25);
+  font-family: "rootFontFamily" !important;
+
+}
+.buttonprimary .MuiButton-startIcon  {
+  margin-right: 4.5px;
+  margin-left: 0px;
+}
+.buttonprimary .MuiButton-startIcon > *:nth-of-type(1) {
+  fill: var(--white-10);
+ 
+}
+
+.buttonprimary:active {
+  background-color: var(--black-20) !important;
+  color: var(--white-10) !important;
+  font-weight: 700 !important;
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.25);
+}
+
+.buttonprimary:hover {
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.buttonprimary:disabled .MuiButton-startIcon > *:nth-of-type(1) {
+  fill: var(--grey-10) !important;
+}
+
+.buttonprimary:disabled {
+  background-color: var(--grey-40) !important;
+  color: var(--grey-10) !important;
+  font-weight: 700 !important;
+  box-shadow: none;
+}
+
+/* Secondary */
+
+.buttonsecondary {
+  background-color: transparent !important;
+  border: 1px solid var(--black-10) !important;
+  color: var(--black-20) !important;
+  font-weight: 700 !important;
+}
+.buttonsecondary .MuiButton-startIcon  {
+  margin-right: 4px;
+  margin-left: -1px;
+}
+.buttonsecondary .MuiButton-startIcon > *:nth-of-type(1) {
+  fill: var(--black-20);
+}
+
+.buttonsecondary:hover {
+  background-color: rgba(42, 42, 42, 0.08) !important;
+  font-weight: 700 !important;
+  color: var(--black-20) !important;
+  border: 1px solid var(--black-20) !important;
+}
+
+.buttonsecondary:active {
+  background-color: rgba(42, 42, 42, 0.18) !important;
+  font-weight: 700 !important;
+  color: var(--black-20) !important;
+}
+
+.buttonsecondary:disabled .MuiButton-startIcon > *:nth-of-type(1) {
+  fill: var(--grey-30) !important;
+  /* margin-left: 4px; */
+}
+
+.buttonsecondary:disabled {
+  box-sizing: border-box !important;
+  background-color: var(--white-10) !important;
+  border: 1px solid var(--grey-30) !important;
+  color: var(--grey-40) !important;
+  font-weight: 700 !important;
+}
+
+/* elevated */
+.buttonelevated {
+  box-sizing: border-box !important;
+  background-color: var(--white-10) !important;
+  color: var(--black-20) !important;
+  font-weight: 700 !important;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.25);
+}
+.buttonelevated .MuiButton-startIcon  {
+  margin-right: 4px;
+  margin-left: 0px;
+}
+.buttonelevated .MuiButton-startIcon > *:nth-of-type(1) {
+  fill: var(--black-20) !important;
+}
+
+.buttonelevated:hover {
+  box-sizing: border-box !important;
+  background-color: var(--white-20) !important;
+  color: var(--black-20) !important;
+  font-weight: 700 !important;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.25);
+}
+
+.buttonelevated:active {
+  box-sizing: border-box !important;
+  background-color: var(--white-20) !important;
+  color: var(--black-20) !important;
+  font-weight: 700 !important;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.buttonelevated:disabled .MuiButton-startIcon > *:nth-of-type(1) {
+  fill: var(--grey-10) !important;
+}
+
+.buttonelevated:disabled {
+  box-sizing: border-box !important;
+  background-color: var(--grey-40) !important;
+  color: var(--grey-10) !important;
+  font-weight: 700 !important;
+  box-shadow: none;
+}
+
+/* mute */
+
+.buttonmute {
+  background-color: var(--grey-40) !important;
+  color: var(--grey-10) !important;
+  font-weight: 700 !important;
+}
+
+/* Text */
+
+.buttontext {
+  background-color: transparent !important;
+  color: var(--infoDark) !important;
+  border: none !important;
+  font-weight: 700 !important;
+  min-width: 0px !important;
+  font-family: "rootFontFamily" !important;
+  font-style: normal !important;
+  font-size: 16px !important;
+  line-height: 23px !important;
+  text-align: center !important;
+  text-transform: none !important;
+  padding: 4.5px 0px 4.5px 0px!important;
+  letter-spacing: normal !important;
+}
+
+.buttontext .MuiButton-startIcon  {
+  margin-right: 4px;
+  margin-left: 0px;
+}
+.buttontext .MuiButton-startIcon > *:nth-of-type(1) {
+  fill: var(--infoDark) !important;
+}
+
+.buttontext:hover .MuiButton-startIcon > *:nth-of-type(1) {
+  fill: var(--black-10) !important;
+}
+
+.buttontext:hover {
+  background-color: transparent !important;
+  color: var(--black-10) !important;
+  border: none !important;
+}
+.buttontext:active {
+  background-color: transparent !important;
+  color: var(--black-10) !important;
+  border: none !important;
+}
+.buttontext:active .MuiButton-startIcon > *:nth-of-type(1){
+  fill: var(--black-20) !important;
+}
+
+.buttontext:disabled .MuiButton-startIcon > *:nth-of-type(1) {
+  fill: var(--grey-40) !important;
+}
+
+.buttontext:disabled {
+  background-color: transparent !important;
+  color: var(--grey-40) !important;
+  border: none !important;
+}
+
+.buttontext:active {
+  color: var(--black-20) !important;
+  border: none !important;
+}
+
+/* Info */
+
+.buttoninfo {
+  background-color: var(--black-10) !important;
+  color: var(--white-10) !important;
+  padding: 5px 10px !important;
+}
+
+/* FullWidth */
+
+.buttonfullWidth {
+  width: 100% !important;
+  color: var(--white-10) !important;
+  border-radius: 5px !important;
+  background-color: var(--black-10) !important;
+}
+
+.svg {
+  fill: var(--white-10);
+}
