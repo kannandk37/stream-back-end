@@ -1,0 +1,177 @@
+/button/simple
+
+import React from "react";
+import { Button } from "@mui/material";
+import "@/design/components/button/simple/style/index.css";
+import { CircularProgressBar } from "@/design/components/progress/circular";
+import { makeStyles } from "tss-react/mui";
+
+export const SimpleButton = ({ component,onClick,endIcon, children, disabled, style, startIcon, disableRipple, width, color, variant, height, iconColor, isLoading, loaderColor, loaderSize, }: SimpleButtonProp) => {
+    // const styles = useStyles({ width, color, variant, disabled, height, iconColor, isLoading, loaderColor, loaderSize })
+    return (
+        <Button
+            // className={styles.classes.root}
+            onClick={!isLoading && onClick}
+            disabled={disabled}
+            style={style}
+            endIcon={endIcon}
+            startIcon={startIcon}
+            disableRipple={disableRipple}
+            component={component}
+        >
+             {isLoading ? <CircularProgressBar color={loaderColor} size={loaderSize}/> : children }
+        </Button>
+    )
+}
+// export const useStyles = makeStyles<Partial<SimpleButtonProp>>()(
+//   (theme, { width, color, variant, disabled }) => ({
+//     root: {
+//       minWidth: 'var(--buttonMinWidth)!important',
+//       padding: 'var(--buttonPadding)!important',
+//       cursor: 'pointer',
+//       borderRadius: 'var(--buttonRadius)!important',
+//       border: (color == 'secondary') ? "1px solid var(--colorbg)!important" : "none",
+//       marginBottom: '10px !important',
+//       fontWeight: 700,
+//       marginLeft: "10px!important",
+
+//       backgroundColor: (variant == 'text') ? "transparent" : (color == 'secondary') ? 'var(--white)!important' : disabled ? ("var(--disable)") : "var(--colorbg) !important",
+
+//       width: width == "fullWidth" && "100%",
+
+//       color: (color == 'secondary' || variant == 'text') ? 'var(--colorbg) !important' : 'var(--white) !important',
+
+//       '&:hover': {
+//         backgroundColor: (color == 'primary') ? ' var(--white)!important' : (color == 'secondary') ? 'var(--colorbg)!important' : (variant !== 'text' || color !== 'info' || width !== 'fullWidth') ? 'var(--white)' : 'var(--colorbg)',
+
+//         border: (color == 'primary' || color == 'secondary') ? "1px solid var(--colorbg)!important" : (variant == 'text' || color == 'info' || width == 'fullWidth')? "none" : 'none',
+
+//         color : ( color == 'info' || width == 'fullWidth')? 'var(--white) !important' : (color == 'secondary') ? 'var(--white) !important'  : (color == 'primary' || variant == 'text') ? "var(--colorbg)!important":  'var(--white) !important'
+        
+//       },
+//     },
+//   })
+// );
+
+export interface SimpleButtonProp {
+    variant?: 'text' | 'elevated' | 'outlined' | 'contained' | 'contained-tonal',
+    color?: 'primary' | 'secondary' | 'teritary' | 'info'
+    width?: 'fullWidth' | string;
+    onClick?: () => any;
+    children?: React.ReactNode;
+    disabled?: boolean;
+    style?: React.CSSProperties;
+    startIcon?: any | React.ReactNode;
+    endIcon?: any | React.ReactNode;
+    disableRipple?: boolean;
+    height?: 'large' | 'extraSmall' | 'medium',
+    iconColor?: string;
+    component?: 'label';
+    radiusBorder?: number;
+    fill?: string
+    isLoading?:boolean
+    loaderColor?:'primary' | 'secondary' | 'teritary' 
+    loaderSize?: 'small' | 'large'
+}
+
+button/simple/style
+
+ /* @import "@/app/App.css"; */
+
+ /* Button Theme */
+ .button, .buttonprimary, .buttonsecondary,
+  .buttonmute, .buttontext, .buttoninfo{
+   min-width: var(--buttonMinWidth)!important;
+   padding:var(--buttonPadding)!important;
+   cursor: var(--cursor)!important;
+   border-radius: var(--buttonRadius)!important;
+   border:none!important;
+  /* To be remove */
+   margin-bottom: 10px!important;
+   margin-left: 10px!important;
+}
+
+ 
+ /* General */
+
+ .button{
+   color:var(--white)!important;
+   background-color: var(--colorbg) !important;
+ }
+.button:hover {
+  font-weight: 700 !important;
+  background-color:  var(--white) !important;
+  border: 1px solid var(--colorbg)!important;
+  color: var(--colorbg)!important;
+}   
+ 
+/* Primary */
+
+.buttonprimary {
+  background-color: var(--colorbg) !important;
+  color: var(--white) !important;
+  
+}
+  .buttonprimary:hover {
+  background-color: var(--white)!important;
+  color: var(--colorbg)!important;
+  border: 1px solid var(--colorbg)!important;
+  font-weight: 700 !important;
+}
+
+/* Secondary */
+
+.buttonsecondary {
+  box-sizing: border-box!important;
+  background-color: var(--white)!important;
+  border: 1px solid var(--colorbg)!important;
+  color: var(--colorbg)!important;
+}
+.buttonsecondary:hover {
+  background-color: var(--colorbg)!important;
+  font-weight: 700 !important;
+   color: #fff!important;
+}
+
+/* mute */
+
+.buttonmute {
+  background-color: rgb(170, 165, 165)!important;
+  color: var(--color)!important;
+}
+.buttonmute:hover {
+  background-color: var(--white)!important;
+  border: 1px solid rgb(170, 165, 165)!important;
+  font-weight: 700 !important;
+}
+
+/* Text */
+
+.buttontext{
+  background-color: transparent!important;
+  color:  var(--colorbg) !important;
+  border:none !important;
+}
+
+/* Info */
+
+.buttoninfo{
+  background-color: var(--colorbg) !important;
+  color:var(--white) !important;
+  padding:5px 10px!important;
+}   
+
+/* FullWidth */
+
+.buttonfullWidth{
+  width: 100%!important;
+  color:var(--white) !important;
+  border-radius: 5px !important;
+  background-color: var(--colorbg) !important;
+   min-width: var(--buttonMinWidth)!important;
+   padding:var(--buttonPadding)!important;
+   cursor: var(--cursor)!important;
+   border-radius: var(--buttonRadius)!important;
+   border:none!important;
+} 
+

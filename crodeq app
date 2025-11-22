@@ -1,0 +1,297 @@
+import { StyleSheet, View } from 'react-native'
+import React, { useEffect } from 'react'
+import axios from 'axios';
+import { configure } from '@/configure'
+import { CommonHttpInterceptor } from '@/core/interceptor/http'
+import { environment } from '@/environments/environment'
+import { MobileNoAuthenticationService } from "@/account/service/authentication/mobileno";
+import { MobileNoCredential } from '@/account/entity/credential/mobileno'
+import { ProfileService } from '@/profile/service/client/profile'
+import { Person as PersonProfile } from "@/profile/entity/person";
+import { Personal } from '@/profile/entity/personal';
+import { Address } from '@/location/entity/address';
+import { DocumentType } from '@/profile/entity/documenttype';
+import { Document } from '@/profile/entity/document';
+import { UserMineService } from '@/user/service/mine';
+import { FileUploadService } from '@/file/service/uploader';
+import { City } from '@/location/entity/city';
+import { Country } from '@/location/entity/country';
+
+
+// import { Button } from '@/design/components/button/simple'
+// import { Text } from '@/design/components/text/element'
+// import { TextInput } from '@/design/components/textinputfield/element'
+// import LeftArrow from '@/assets/svg/LeftArrow'
+// import EyeDisableIcon from '@/assets/svg/EyeDisableIcon'
+// import LoginScreen from '@/screens/LoginScreen'
+// import ChooseLanguageScreen from '@/screens/ChooseLanguageScreen'
+
+
+// import { IconButton } from '@/design/components/button/element/iconButton'
+
+const App = () => {
+
+  configure()
+  new CommonHttpInterceptor().setup()
+
+  axios.interceptors.request.use(
+    (value) => {
+      return new Promise(async (resolve, reject) => {
+        if (value.headers && typeof value.headers.set === 'function') {
+          //@ts-ignore
+          value.headers.set('API-Key', environment.api.default["API-Key"])
+        } else {
+          (value.headers as any) = {
+            ...value.headers,
+            'API-Key': environment.api.default["API-Key"]
+          }
+        }
+        console.log(value, "value");
+        resolve(value);
+      });
+    },
+    (error: any) => {
+      console.error(error)
+      return Promise.reject(error)
+    }
+  );
+
+  useEffect(() => {
+    (async () => {
+      try {
+
+        // mobile no authentication
+        // await new MobileNoAuthenticationService().verifyMobileNoCredential(new MobileNoCredential("33", "456789123", null))
+        
+        // //otp authentication
+        // let credential = new MobileNoCredential("33", "456789123", "928208")
+        // await new MobileNoAuthenticationService().authenticateMobileNoCredential(credential);
+        // let plans = await new MobileNoAuthenticationService().plans();
+        // console.log(JSON.stringify(plans, null, 5))
+
+        // await new MobileNoAuthenticationService().refreshToken();
+
+        // have to complete
+        // const fileExtension = 'pdf'
+        // const fileType = 'application/pdf'
+        // let response = await new MobileNoAuthenticationService().retrieveUploadCredentialForDocument(fileType, fileExtension)
+        // console.log("response123", response)
+        // have to work on this path
+        // let fileUploadService = new FileUploadService();
+        // await fileUploadService.uploadFileToEndpoint('file', response.endpoint);
+
+      // // register owner
+        // let personProfile = new PersonProfile()
+        // let personal = new Personal()
+        // personal.email = "finder@gmail.com";
+        // personal.firstName = "finderfirstname";
+        // personal.lastName = "finderlastname";
+
+        // personal.mobileNo = "456789123";
+
+      //   interface Certificate {
+      //     id?: string,
+      //     name?: string,
+      //     image?: string,
+      //  // file?: File
+      // }
+
+      
+      // let certificates :Certificate[] = [
+      //   {
+      //     name: "CNI",
+      //     image: "https://documents-profile-crodeq-com-zufiz-com.s3.eu-west-3.amazonaws.com/profiles/documents/cf6b1898-2fd1-486b-b1ad-c3a879a747e0.pdf"  // uploadUrl response.endpoint.split("?")[0]
+      //   }
+      // ]
+        // personal.documents = certificates;
+        // personProfile.personal = personal;
+        // await new MobileNoAuthenticationService().activateMobileNoAccountOnboard(personProfile)
+
+
+      //   //  to delete and uploaded image 
+      //   certificates[0].image.split("/")[]
+        // let deletedResponse = await new MobileNoAuthenticationService().deleteDocument('e67d3da2-174c-4472-ac8a-b0dd640d3e4f.pdf');
+        // console.log(deletedResponse)
+        // get user
+        // let me = await new UserMineService().mine();
+        // console.log(JSON.stringify(me, null, 5))
+
+
+
+        // let personProfile = await new ProfileService().getProfile()
+        // console.log(JSON.stringify(personProfile, null, 5))
+
+
+
+        // let address = new Address()
+        // address.flatWithNo = "25,house building";
+        // address.streetAndArea = "house street1";
+        // let city = new City()
+        // city.name = "my city";
+        // address.city = city
+        // let country = new Country(null, "house country");
+        // address.country = country;
+        // address.pincode = "750005"
+        // personal.residence = address
+        // personProfile.personal = personal;
+        // let updatedProfile = await new MobileNoAuthenticationService().activateMobileNoAccountOnboard(personProfile);
+        // console.log(JSON.stringify(updatedProfile, null, 5))
+      } catch (error) {
+        console.log(error)
+      }
+    })()
+  }, [])
+
+  return (
+    <View style={{ flex: 1 }}>
+      {/* <Text variant='display1' color='#000'>Display / d1</Text>
+      <Text variant='display2' color='#000'>Display / d1</Text>
+
+      <Text variant='display3' color='#000'>Display / d1</Text>
+
+
+      <Text variant='h1' color='#000'>Heading / h1</Text>
+
+      <Text variant='h2' color='#000'>h2</Text>
+
+      <Text variant='h3' color='#000'>h3</Text>
+
+      <Text variant='title1' color='#000'>title1</Text>
+
+      <Text variant='title2' color='#000'>title2</Text>
+
+      <Text variant='title3' color='#000'>title3</Text>
+
+      <Text variant='body1' color='#000'>Body1 / b1</Text>
+
+      <Text variant='body2' color='#000'>Body2 / b2</Text>
+
+      <Text variant='body3' color='#000'>Body3 / b3</Text>
+      <Text variant='buttontext' color='#000'>Button text/btn1</Text>
+
+      <Text variant='buttontext2' color='#000'>Button text/btn2</Text> */}
+
+
+      {/* <Button >asa</Button> */}
+      {/* <IconButton variant='outline'></IconButton> */}
+      {/* <TextInput type='mobile' startText= "+33" placeholder='0 00 00 00 00' label='First name'  passwordVisibleOff={<LeftArrow />} passwordVisibleOn={<EyeDisableIcon />} startIcon={<EyeDisableIcon />} helperText='hajshkahskjkas' helperTextPriority='low'></TextInput> */}
+      {/* <LoginScreen /> */}
+      {/* <ChooseLanguageScreen/> */}
+    </View>
+  )
+}
+
+export default App
+
+const styles = StyleSheet.create({})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    useEffect(() => {
+        (async () => {
+            let profile = await new ProfileService().getProfile();
+            setProfileInfo(profile);
+        })()
+    }, []);
+
+    useEffect(() => {
+        if (profileInfo) {
+          setUserFirstName(profileInfo.personal.firstName);
+          setUserLastName(profileInfo.personal.lastName);
+          setUserEmail(profileInfo.personal.email);
+        }
+    }, [profileInfo]);
+
+
+
+
+
+    useEffect(() => {
+        (async () => {
+            let profile = await new ProfileService().getProfile();
+            setProfileInfo(profile);
+        })()
+    }, []);
+
+    useEffect(() => {
+        if (profileInfo) {
+            const residenceflatWithNo = profileInfo.personal.residence.flatWithNo
+            const splitFlatNo = residenceflatWithNo.substring(0,residenceflatWithNo.indexOf(','));
+            const splitBuildingName = residenceflatWithNo.substring(residenceflatWithNo.indexOf(',') + 1);
+            setUserHouseNumber(splitFlatNo);
+            setBuildingName(splitBuildingName);
+            setStreetName(profileInfo.personal.residence.streetAndArea);
+        }
+    }, [profileInfo]);
+
+    const onChangeHouseNo = (houseNo: string) => {
+        setUserHouseNumber(houseNo)
+        setUserHouseNumberError(false);
+        setUserHouseNumberErrorMessage('')
+    }
+    const onChangeBuildingName = (name: string) => {
+        setBuildingName(name)
+        setBuildingNameError(false);
+        setBuildingNameErrorMessage('')
+    }
+    const onChangeStreetName = (street: string) => {
+        setStreetName(street)
+        setStreetNameError(false);
+        setStreetNameErrorMessage('')
+    }
+
+
+    const handleSubmit = async () => {
+        if (isValid()) {
+
+            // Work in progress
+
+            // console.log(JSON.stringify(profile, null, 5))
+            if (profileInfo) {
+                let personalProfile = new PersonProfile();
+                let personal = new Personal();
+                personal.id = profileInfo.personal.id;
+                personal.firstName = profileInfo.personal.firstName;
+                personal.lastName = profileInfo.personal.lastName;
+                personal.documents = profileInfo.personal.documents;
+                personal.email = profileInfo.personal.email;
+                personal.mobileNo = profileInfo.personal.mobileNo;
