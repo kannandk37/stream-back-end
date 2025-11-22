@@ -1,0 +1,35 @@
+[
+    {
+        "name": "P1"
+    },
+    {
+        "name": "P2"
+    },
+    {
+        "name": "P3"
+    },
+    {
+        "name": "P4"
+    }
+];
+
+[
+    {
+        "name": "Ready to Assign"
+    },
+    {
+        "name": "In Progress"
+    },
+    {
+        "name": "Denied"
+    },
+    {
+        "name": "Partially Paid"
+    },
+    {
+        "name": "Partially Denied"
+    },
+    {
+        "name": "Paid & Closed"
+    }
+]

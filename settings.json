@@ -1,0 +1,9 @@
+{
+    "terminal.integrated.env.linux": {
+        "PATH": "/home/kannan/Documents/softwares/node-v18.12.1-linux-x64/bin:${env:PATH}"
+    },
+    "cSpell.words": [
+        "Avaliable"
+    ],
+    "editor.inlineSuggest.showToolbar": "always"
+}
